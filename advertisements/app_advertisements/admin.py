@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Advertisements
 # Register your models here.
 
-class AdvertisementAdmin(admin.ModelAdmin): #админ-модель
+class AdvertisementAdmin(admin.ModelAdmin): #админ-модель.
     list_display = ['id', 'title', 'description', 'price',
                     'created_date', 'auction']
     list_filter = ['auction', 'created_time']
