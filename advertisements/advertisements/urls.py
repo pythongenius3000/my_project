@@ -24,3 +24,7 @@ urlpatterns = [
     path('', include('app_advertisements.urls')),
     path('', include('app_lesson_4.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

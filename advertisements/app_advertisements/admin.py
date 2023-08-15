@@ -1,16 +1,17 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import Advertisements
 # Register your models here.
 
 class AdvertisementAdmin(admin.ModelAdmin): #админ-модель
     list_display = ['id', 'title', 'description', 'price',
-                    'created_date', 'updated_date', 'auction', 'user']
+                    'created_date', 'updated_date', 'auction', 'user', 'image', 'get_image']
     list_filter = ['auction', 'created_time']
 
     actions=['make_auction_false', 'make_auction_true']
     fieldsets = (
         (
-            'Общее', {'fields': ('title', 'description', 'user')}
+            'Общее', {'fields': ('title', 'description', 'user', 'image')}
         ),
         (
             'Финансы', {'fields': ('price', 'auction'),
@@ -18,6 +19,7 @@ class AdvertisementAdmin(admin.ModelAdmin): #админ-модель
                         }
         )
     )
+
     @admin.action(description='Убрать возможность торга')
     def make_auction_false(self, request, queryset):
         queryset.update(auction=False)

@@ -16,7 +16,7 @@ class Advertisements(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-
+    image = models.ImageField("Изображение", upload_to="advertisements/")
     @admin.display(description='Дата создания')
     def created_date(self):
         from django.utils import timezone
@@ -36,6 +36,13 @@ class Advertisements(models.Model):
                                'font-weight: bold">Сегодня в '
                                '{}</span>', up_time)
         return self.updated_time.strftime("%d.%m.%Y в %H:%M:%S")
+
+    @admin.display(description='Фото')
+    def get_image(self):
+        if self.image:
+            return format_html(
+                '<img src="{url}" style="max-width: 80px; max-height: 80px:">', url=self.image.url)
+
 
     def __str__(self):
         return f"Advertisement(id={self.id}, title={self.title}, price={self.price})"
