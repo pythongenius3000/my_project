@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 from django.utils.html import format_html
 
-User = get_user_model() #получаем модель Usera
+User = get_user_model() #получаем модель Userа
 
 
 class Advertisements(models.Model):
