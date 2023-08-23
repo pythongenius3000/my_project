@@ -11,7 +11,7 @@ class AdvertisementForm(forms.ModelForm):
         self.fields['description'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['price'].widget.attrs['class'] = 'form-control form-control-lg'
         self.fields['auction'].widget.attrs['class'] = 'form-check-input'
-        self.fields['description'].widget.attrs['class'] = 'form-control form-control-lg'
+        self.fields['image'].widget.attrs['class'] = 'form-control form-control-lg'
     class Meta:
         model = Advertisements
         fields = ("title", "description", "image", "price", "auction")
